@@ -1,21 +1,8 @@
-# ai-workshop
+# Nullon Berlin 2026 AI Workshop
 
-[![PyPI - Version](https://img.shields.io/pypi/v/ai-workshop.svg)](https://pypi.org/project/ai-workshop)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ai-workshop.svg)](https://pypi.org/project/ai-workshop)
 
------
+## Run Globals sample
 
-## Table of Contents
-
-- [Installation](#installation)
-- [License](#license)
-
-## Installation
-
-```console
-pip install ai-workshop
+```bash
+python -m seclab_taskflow_agent -t ai_workshop.taskflows.example_globals -g fruit=apples
 ```
-
-## License
-
-`ai-workshop` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
