@@ -1,0 +1,63 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ai-workshop"
+dynamic = ["version"]
+description = ''
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "Peter Stöckli", email = "p-@github.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+    "seclab-taskflow-agent",
+]
+
+[project.urls]
+Documentation = "https://github.com/Peter Stöckli/ai-workshop#readme"
+Issues = "https://github.com/Peter Stöckli/ai-workshop/issues"
+Source = "https://github.com/Peter Stöckli/ai-workshop"
+
+[tool.hatch.version]
+path = "src/ai_workshop/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/ai_workshop tests}"
+
+[tool.coverage.run]
+source_pkgs = ["ai_workshop", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/ai_workshop/__about__.py",
+]
+
+[tool.coverage.paths]
+ai_workshop = ["src/ai_workshop", "*/ai-workshop/src/ai_workshop"]
+tests = ["tests", "*/ai-workshop/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
