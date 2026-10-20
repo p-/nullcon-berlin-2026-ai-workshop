@@ -1,6 +1,7 @@
 seclab-taskflow-agent:
   version: "1.0"
   filetype: taskflow
+model_config: ai_workshop.configs.ex1_model_config
 
 globals:
   fruit: bananas
@@ -8,5 +9,6 @@ taskflow:
   - task:
       agents:
         - ai_workshop.personalities.fruit_expert
+      model: general_tasks
       user_prompt: |
         Tell me more about {{ globals.fruit }}.
