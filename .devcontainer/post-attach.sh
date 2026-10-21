@@ -48,10 +48,10 @@ if [ ! -f .env ]; then
     echo "#MODEL_TEMP=1.0" >> .env
     echo >> .env
     echo "# Optional data storage directories. By default, ~/.local is used." >> .env
-    echo "#MEMCACHE_STATE_DIR=/app/data" >> .env
-    echo "#CODEQL_DBS_BASE_PATH=/app/data" >> .env
-    echo "#DATA_DIR=/app/data" >> .env
-    echo "#LOG_DIR=/app/logs" >> .env
+    echo "MEMCACHE_STATE_DIR=/workspaces/nullcon-berlin-2026-ai-workshop/data" >> .env
+    echo "CODEQL_DBS_BASE_PATH=/workspaces/nullcon-berlin-2026-ai-workshop/data" >> .env
+    echo "DATA_DIR=/workspaces/nullcon-berlin-2026-ai-workshop/data" >> .env
+    echo "LOG_DIR=/workspaces/nullcon-berlin-2026-ai-workshop/logs" >> .env
 
     code .env || echo "ℹ️ Unable to open .env in VS Code. Please open and review the .env file manually."
     code README.md

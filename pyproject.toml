@@ -26,6 +26,7 @@ classifiers = [
 ]
 dependencies = [
     "seclab-taskflow-agent",
+    "seclab-taskflows",
 ]
 
 [project.urls]
