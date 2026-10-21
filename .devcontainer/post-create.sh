@@ -15,6 +15,6 @@ python -m pip install hatch
 hatch build
 
 # Install this package from local directory.
-pip install -e .
+python -m pip install --upgrade --upgrade-strategy eager --force-reinstall -e .
 
 echo "✅ Development environment setup complete!"
