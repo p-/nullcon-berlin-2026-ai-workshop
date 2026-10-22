@@ -20,5 +20,5 @@ python -m seclab_taskflow_agent -t seclab_taskflows.taskflows.audit.fetch_securi
 ```
 
 ```bash
-python -m seclab_taskflow_agent -t ai_workshop.taskflows.ex4_variant_finder -g repo=pallets/flask
+python -m seclab_taskflow_agent -t ai_workshop.taskflows.ex2_variant_finder -g repo=pallets/flask
 ```

@@ -4,7 +4,7 @@ seclab-taskflow-agent:
 model_config: ai_workshop.configs.ex1_model_config
 
 globals:
-  fruit: bananas
+  fruit:
 taskflow:
   - task:
       agents:

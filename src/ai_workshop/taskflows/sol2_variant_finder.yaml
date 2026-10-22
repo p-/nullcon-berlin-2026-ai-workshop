@@ -1,0 +1,38 @@
+seclab-taskflow-agent:
+  version: "1.0"
+  filetype: taskflow
+model_config: ai_workshop.configs.ex4_model_config
+
+globals:
+  repo:
+# Taskflow to audit some potential issues.
+taskflow:
+  - task:
+      must_complete: true
+      exclude_from_context: true
+      agents:
+        - seclab_taskflow_agent.personalities.assistant
+      model: general_tasks
+      user_prompt: |
+        Fetch all the advisories for the repo {{ globals.repo }}.
+      toolboxes:
+        - seclab_taskflows.toolboxes.ghsa
+  - task:
+      must_complete: false
+      max_steps: 300
+      repeat_prompt: true
+      async: true
+      agents:
+        - ai_workshop.personalities.security_expert_short
+      model: code_analysis
+      user_prompt: |
+        Have a look at the advisory description {{ result.description }} with title {{ result.summary }} and id {{ result.ghsa_id }}.
+        Try to figure out the affected source code. 
+        When found list it.
+        Try to find out whether this issue was fixed completely.
+        Finally, write your findings as a Markdown variant report for advisory id {{ result.ghsa_id }}.
+
+      toolboxes:
+        - seclab_taskflows.toolboxes.container_shell_source_access
+        - seclab_taskflows.toolboxes.ghsa
+        - ai_workshop.toolboxes.variant_report
