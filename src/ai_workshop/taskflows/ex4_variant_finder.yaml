@@ -30,7 +30,9 @@ taskflow:
         Try to figure out the affected source code. 
         When found list it.
         Try to find out whether this issue was fixed completely.
+        Finally, write your findings as a Markdown variant report for advisory id {{ result.ghsa_id }}.
 
       toolboxes:
         - seclab_taskflows.toolboxes.container_shell_source_access
         - seclab_taskflows.toolboxes.ghsa
+        - ai_workshop.toolboxes.variant_report
