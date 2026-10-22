@@ -23,7 +23,7 @@ taskflow:
       repeat_prompt: true
       async: true
       agents:
-        - seclab_taskflows.personalities.web_application_security_expert
+        - ai_workshop.personalities.security_expert_short
       model: code_analysis
       user_prompt: |
         Have a look at the advisory description {{ result.description }} with title {{ result.summary }} and id {{ result.ghsa_id }}.
