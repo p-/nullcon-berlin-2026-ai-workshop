@@ -1,7 +1,7 @@
 seclab-taskflow-agent:
   version: "1.0"
   filetype: taskflow
-model_config: ai_workshop.configs.ex4_model_config
+model_config: ai_workshop.configs.ex2_model_config
 
 globals:
   repo:

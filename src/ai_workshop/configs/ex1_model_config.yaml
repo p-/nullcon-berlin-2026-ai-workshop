@@ -7,4 +7,4 @@ model_settings:
   general_tasks:
     api_type: responses
     reasoning:
-      effort: medium
+      effort: low
