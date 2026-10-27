@@ -14,15 +14,14 @@ Note: The first 120h hours per core of Codespace usage are free per month, you c
 ### Step-by-Step
 
 1. Login to your [GitHub](https://github.com/login) account
-2. Go to the repo https://github.com/p-/nullcon-berlin-2023-workshop / (short link: https://gh.io/nc-2023-ws)
-3. Click on Code -> Codespaces
-4. Click on the plus sign (+) to create a new codespace.
+2. On this repo: Click on Code -> Codespaces
+3. Click on the plus sign (+) to create a new codespace.
 
 <img src="images/create-codespace.png"  width="439" alt="Screenshot: Create Codespace, click on plus">
 
 => VS Code will start in your browser and a remote Codespace will be built (this may take some time).
 
-5. Wait until the Python virtual environment is activated, it should look like this:
+4. Wait until the Python virtual environment is activated, it should look like this:
 
 <img src="images/python-venv.png"  width="439" alt="Screenshot: Python virtual env is activated .venv is displayed.">
 
