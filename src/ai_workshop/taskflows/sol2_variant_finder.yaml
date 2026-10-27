@@ -7,6 +7,7 @@ globals:
   repo:
 taskflow:
   - task:
+      name: fetch advisories
       must_complete: true
       exclude_from_context: true
       agents:
@@ -18,6 +19,7 @@ taskflow:
         - seclab_taskflows.toolboxes.ghsa
 
   - task:
+      name: check for variants and incomplete fixes
       must_complete: false
       max_steps: 300
       repeat_prompt: true
@@ -26,10 +28,11 @@ taskflow:
         - ai_workshop.personalities.security_expert_short
       model: code_analysis
       user_prompt: |
-        Have a look at the advisory description {{ result.description }} with title {{ result.summary }} and id {{ result.ghsa_id }}.
-        Try to figure out the affected source code. 
-        When found list it.
-        Try to find out whether this issue was fixed completely. Also search for variants of it in the source code.
+        Have a look at the advisory description {{ result.description }} with
+        title {{ result.summary }} and id {{ result.ghsa_id }}.
+        Try to figure out the affected source code. When found list it.
+        Try to find out whether this issue fixed completely in the current source code.
+        Also search for variants of it in the source code.
         Finally, write your findings as a Markdown variant report for advisory id {{ result.ghsa_id }}.
 
       toolboxes:
