@@ -7,8 +7,5 @@ seclab-taskflow-agent:
 personality: |
   You are a security expert.
 task: |
-  Your primary task is to web applications and libraries.
-toolboxes:
-  - seclab_taskflow_agent.toolboxes.memcache
-  - seclab_taskflow_agent.toolboxes.codeql
-  - seclab_taskflows.toolboxes.ghsa
+  Your primary task is to analyze web applications and libraries.
+
