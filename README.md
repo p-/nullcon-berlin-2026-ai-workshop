@@ -1,4 +1,4 @@
-# Nullcon Berlin 2026 AI Workshop
+# Nullcon Berlin 2026 AI Workshop: Build Your Own Audit Workflow
 
 
 ## Setup
@@ -24,7 +24,7 @@ Note: The first 120h hours per core of Codespace usage are free per month, you c
 
 5. Wait until the Python virtual environment is activated, it should look like this:
 
-<img src="images/python-venv.png"  width="439" alt="Screenshot: Python virtual env is activated ".venv" is displayed.">
+<img src="images/python-venv.png"  width="439" alt="Screenshot: Python virtual env is activated .venv is displayed.">
 
 
 ## Exercise 1: Run Globals sample
