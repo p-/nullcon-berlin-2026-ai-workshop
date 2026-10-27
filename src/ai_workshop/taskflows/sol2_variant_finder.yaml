@@ -5,7 +5,6 @@ model_config: ai_workshop.configs.ex2_model_config
 
 globals:
   repo:
-# Taskflow to audit some potential issues.
 taskflow:
   - task:
       must_complete: true
@@ -17,6 +16,7 @@ taskflow:
         Fetch all the advisories for the repo {{ globals.repo }}.
       toolboxes:
         - seclab_taskflows.toolboxes.ghsa
+
   - task:
       must_complete: false
       max_steps: 300
@@ -29,7 +29,7 @@ taskflow:
         Have a look at the advisory description {{ result.description }} with title {{ result.summary }} and id {{ result.ghsa_id }}.
         Try to figure out the affected source code. 
         When found list it.
-        Try to find out whether this issue was fixed completely.
+        Try to find out whether this issue was fixed completely. Also search for variants of it in the source code.
         Finally, write your findings as a Markdown variant report for advisory id {{ result.ghsa_id }}.
 
       toolboxes:
