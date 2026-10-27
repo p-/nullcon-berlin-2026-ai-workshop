@@ -22,3 +22,8 @@ python -m seclab_taskflow_agent -t seclab_taskflows.taskflows.audit.fetch_securi
 ```bash
 python -m seclab_taskflow_agent -t ai_workshop.taskflows.ex2_variant_finder -g repo=pallets/flask
 ```
+
+
+## Prompt
+
+Based on the variant_report toolbox create one that writes the same content in JSON format. variant_exists should be reflected as boolean field.
