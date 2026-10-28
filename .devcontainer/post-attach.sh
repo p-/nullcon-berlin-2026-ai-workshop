@@ -4,7 +4,10 @@ set -e
 # Create .env file if it doesn't exist
 if [ ! -f .env ]; then
     echo "📝 Creating .env template..."
-    touch .env
+    # Build the template in a temp file and move it into place at the end, so
+    # an interrupted run doesn't leave a partial .env that blocks later runs.
+    ENV_TMP=$(mktemp)
+    trap 'rm -f "$ENV_TMP"' EXIT
 
     # Test whether api.githubcopilot.com works with the GITHUB_TOKEN
     # provided by the codespace. If so, configure .env to use that token.
@@ -12,11 +15,11 @@ if [ ! -f .env ]; then
     if [ ! -v AI_API_TOKEN ] && [ -v CODESPACES ] && [ -v GITHUB_TOKEN ]; then
         if curl --fail --silent --show-error https://api.githubcopilot.com/models -H "Authorization: Bearer $GITHUB_TOKEN" > /dev/null; then
             USE_GITHUB_TOKEN="true"
-            echo 'AI_API_TOKEN=${GITHUB_TOKEN}' >> .env
+            echo 'AI_API_TOKEN=${GITHUB_TOKEN}' >> "$ENV_TMP"
             if [ ! -v GH_TOKEN ]; then
-                echo 'GH_TOKEN=${GITHUB_TOKEN}' >> .env
+                echo 'GH_TOKEN=${GITHUB_TOKEN}' >> "$ENV_TMP"
             fi
-            echo >> .env
+            echo >> "$ENV_TMP"
         fi
     fi
 
@@ -32,26 +35,27 @@ if [ ! -f .env ]; then
         fi
     fi
 
-    echo "# Uncomment the endpoint that you want to use:" >> .env
-    echo "#AI_API_ENDPOINT=https://models.github.ai/inference" >> .env
-    echo "#AI_API_ENDPOINT=https://api.openai.com/v1" >> .env
+    echo "# Uncomment the endpoint that you want to use:" >> "$ENV_TMP"
+    echo "#AI_API_ENDPOINT=https://models.github.ai/inference" >> "$ENV_TMP"
+    echo "#AI_API_ENDPOINT=https://api.openai.com/v1" >> "$ENV_TMP"
 
     # Use api.githubcopilot.com by default if USE_GITHUB_TOKEN is true.
     if [[ "$USE_GITHUB_TOKEN" == "true" ]]; then
-        echo "AI_API_ENDPOINT=https://api.githubcopilot.com" >> .env
+        echo "AI_API_ENDPOINT=https://api.githubcopilot.com" >> "$ENV_TMP"
     else
-        echo "#AI_API_ENDPOINT=https://api.githubcopilot.com" >> .env
+        echo "#AI_API_ENDPOINT=https://api.githubcopilot.com" >> "$ENV_TMP"
     fi
 
-    echo >> .env
-    echo "# Uncomment to set the model temperature" >> .env
-    echo "#MODEL_TEMP=1.0" >> .env
-    echo >> .env
-    echo "# Optional data storage directories. By default, ~/.local is used." >> .env
-    echo "MEMCACHE_STATE_DIR=/workspaces/nullcon-berlin-2026-ai-workshop/data" >> .env
-    echo "CODEQL_DBS_BASE_PATH=/workspaces/nullcon-berlin-2026-ai-workshop/data" >> .env
-    echo "DATA_DIR=/workspaces/nullcon-berlin-2026-ai-workshop/data" >> .env
-    echo "LOG_DIR=/workspaces/nullcon-berlin-2026-ai-workshop/logs" >> .env
+    echo >> "$ENV_TMP"
+    echo "# Uncomment to set the model temperature" >> "$ENV_TMP"
+    echo "#MODEL_TEMP=1.0" >> "$ENV_TMP"
+    echo >> "$ENV_TMP"
+    echo "# Optional data storage directories. By default, ~/.local is used." >> "$ENV_TMP"
+    echo "MEMCACHE_STATE_DIR=/workspaces/nullcon-berlin-2026-ai-workshop/data" >> "$ENV_TMP"
+    echo "CODEQL_DBS_BASE_PATH=/workspaces/nullcon-berlin-2026-ai-workshop/data" >> "$ENV_TMP"
+    echo "DATA_DIR=/workspaces/nullcon-berlin-2026-ai-workshop/data" >> "$ENV_TMP"
+    echo "LOG_DIR=/workspaces/nullcon-berlin-2026-ai-workshop/logs" >> "$ENV_TMP"
+    mv "$ENV_TMP" .env
 
     code .env || echo "ℹ️ Unable to open .env in VS Code. Please open and review the .env file manually."
     code README.md
