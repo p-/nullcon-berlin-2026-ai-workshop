@@ -61,3 +61,8 @@ python -m seclab_taskflow_agent -t ai_workshop.taskflows.ex2_variant_finder -g r
 ```
 Based on the variant_report toolbox create a new one named variant_report_json that writes the same content in JSON format. variant_exists should be reflected as boolean field.
 ```
+
+
+## Fuzzing examples
+
+* [C/C++ with libFuzzer](fuzzing/c/README.md)
