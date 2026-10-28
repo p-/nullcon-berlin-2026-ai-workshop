@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
 
+# VS Code's Python extension sends Ctrl+C before activating the venv in this
+# terminal. Ignore it so setup can finish; activation runs afterwards.
+trap '' INT
+
 # Create .env file if it doesn't exist
 if [ ! -f .env ]; then
     echo "📝 Creating .env template..."
@@ -13,7 +17,7 @@ if [ ! -f .env ]; then
     # provided by the codespace. If so, configure .env to use that token.
     USE_GITHUB_TOKEN="false"
     if [ ! -v AI_API_TOKEN ] && [ -v CODESPACES ] && [ -v GITHUB_TOKEN ]; then
-        if curl --fail --silent --show-error https://api.githubcopilot.com/models -H "Authorization: Bearer $GITHUB_TOKEN" > /dev/null; then
+        if curl --fail --silent --show-error --max-time 10 https://api.githubcopilot.com/models -H "Authorization: Bearer $GITHUB_TOKEN" > /dev/null; then
             USE_GITHUB_TOKEN="true"
             echo 'AI_API_TOKEN=${GITHUB_TOKEN}' >> "$ENV_TMP"
             if [ ! -v GH_TOKEN ]; then
