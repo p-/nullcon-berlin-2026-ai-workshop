@@ -66,4 +66,8 @@ if [ ! -f .env ]; then
     echo "⚠️  Defaults can be changed by editing the auto-generated .env file."
 fi
 
+# The agent doesn't create the directories that .env points LOG_DIR and the
+# data paths to.
+mkdir -p data logs
+
 echo "💡 Remember to activate the virtual environment: source .venv/bin/activate"
