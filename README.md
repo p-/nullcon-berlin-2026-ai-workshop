@@ -66,3 +66,4 @@ Based on the variant_report toolbox create a new one named variant_report_json t
 ## Fuzzing examples
 
 * [C/C++ with libFuzzer](fuzzing/c/README.md)
+* [Java with Jazzer and Maven](fuzzing/java/README.md)
