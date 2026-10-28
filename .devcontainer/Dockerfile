@@ -2,10 +2,15 @@
 FROM mcr.microsoft.com/devcontainers/base:ubuntu-24.04
 
 # Install system dependencies
-# Note: Python and Git are installed via devcontainer features
+# Note: Python, Git, Java/Maven and Node.js are installed via devcontainer features
+# libclang-rt-18-dev provides the libFuzzer and sanitizer runtimes for clang;
+# llvm provides llvm-symbolizer for readable sanitizer stack traces.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends \
     build-essential \
+    clang \
+    libclang-rt-18-dev \
+    llvm \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 

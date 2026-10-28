@@ -21,6 +21,13 @@
     },
     "ghcr.io/devcontainers/features/copilot-cli:1": {
       "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "21",
+      "installMaven": true
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "24"
     }
   },
   // Configure tool-specific properties
@@ -34,7 +41,8 @@
         "GitHub.copilot",
         "GitHub.copilot-chat",
         "ms-azuretools.vscode-docker",
-        "qwtel.sqlite-viewer"
+        "qwtel.sqlite-viewer",
+        "ms-vscode.cpptools"
       ],
       "settings": {
         "python.useEnvironmentsExtension": true,
