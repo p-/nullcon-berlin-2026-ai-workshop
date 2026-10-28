@@ -1,2 +1,3 @@
 /fuzz_me
+/fuzz_me.dSYM/
 crash-*
