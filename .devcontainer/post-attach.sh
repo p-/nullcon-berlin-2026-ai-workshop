@@ -56,7 +56,7 @@ if [ ! -f .env ]; then
     echo >> "$ENV_TMP"
     echo "# Optional data storage directories. By default, ~/.local is used." >> "$ENV_TMP"
     echo "MEMCACHE_STATE_DIR=/workspaces/nullcon-berlin-2026-ai-workshop/data" >> "$ENV_TMP"
-    echo "CODEQL_DBS_BASE_PATH=/workspaces/nullcon-berlin-2026-ai-workshop/data" >> "$ENV_TMP"
+    echo "# CODEQL_DBS_BASE_PATH=/workspaces/nullcon-berlin-2026-ai-workshop/data" >> "$ENV_TMP"
     echo "DATA_DIR=/workspaces/nullcon-berlin-2026-ai-workshop/data" >> "$ENV_TMP"
     echo "LOG_DIR=/workspaces/nullcon-berlin-2026-ai-workshop/logs" >> "$ENV_TMP"
     mv "$ENV_TMP" .env

@@ -9,12 +9,12 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Install CodeQL CLI
-RUN curl -Ls -o /tmp/codeql.zip https://github.com/github/codeql-cli-binaries/releases/latest/download/codeql-linux64.zip \
-    && unzip /tmp/codeql.zip -d /opt \
-    && mv /opt/codeql /opt/codeql-cli \
-    && ln -s /opt/codeql-cli/codeql /usr/local/bin/codeql \
-    && rm /tmp/codeql.zip
+# Install CodeQL CLI (removed for this workshop)
+# RUN curl -Ls -o /tmp/codeql.zip https://github.com/github/codeql-cli-binaries/releases/latest/download/codeql-linux64.zip \
+#     && unzip /tmp/codeql.zip -d /opt \
+#     && mv /opt/codeql /opt/codeql-cli \
+#     && ln -s /opt/codeql-cli/codeql /usr/local/bin/codeql \
+#     && rm /tmp/codeql.zip
 
 # Set working directory
 WORKDIR /workspaces/ai-workshop
