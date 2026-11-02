@@ -1,5 +1,7 @@
 #!/bin/bash
-set -e
+set -euo pipefail
+
+cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.."
 
 echo "🚀 Setting up Seclab Taskflows development environment..."
 
@@ -11,10 +13,10 @@ python3 -m venv .venv
 echo "📥 Installing Python dependencies..."
 source .venv/bin/activate
 python -m pip install --upgrade pip
-python -m pip install hatch
-hatch build
 
-# Install this package from local directory.
-python -m pip install --upgrade --upgrade-strategy eager --force-reinstall -e .
+# Use the project's build backend without Hatch's unrelated CLI dependencies.
+python -m pip install --upgrade --upgrade-strategy eager -e . hatchling
+python -m pip check
+python -m hatchling build
 
 echo "✅ Development environment setup complete!"
