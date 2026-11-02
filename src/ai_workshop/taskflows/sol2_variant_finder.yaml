@@ -29,11 +29,14 @@ taskflow:
       model: code_analysis
       user_prompt: |
         Have a look at the advisory description {{ result.description }} with
-        title {{ result.summary }} and id {{ result.ghsa_id }}.
-        Try to figure out the affected source code. When found list it.
-        Try to find out whether this issue fixed completely in the current source code.
-        Also search for variants of it in the source code.
-        Finally, write your findings as a Markdown variant report for advisory id {{ result.ghsa_id }}.
+        title {{ result.summary }} and id {{ result.ghsa_id }}. Try to figure
+        out the affected source code. When found list it. Try to find out
+        whether this issue fixed completely in the current source code. Also
+        search for variants of it in the source code. Finally, write your
+        findings as a Markdown variant report for advisory id
+        {{ result.ghsa_id }}.
+        IMPORTANT: always compare the affected source code with the current
+        source code to determine if the issue is fixed completely.
 
       toolboxes:
         - seclab_taskflows.toolboxes.container_shell_source_access
