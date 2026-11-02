@@ -45,6 +45,7 @@
         "ms-vscode.cpptools"
       ],
       "settings": {
+        "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
         "python.useEnvironmentsExtension": true,
         "workbench.editorAssociations": {
           "*.md": "vscode.markdown.preview.editor"
@@ -54,9 +55,10 @@
   },
   // Use 'forwardPorts' to make a list of ports inside the container available locally
   "forwardPorts": [],
-  // Use 'postCreateCommand' to run commands after the container is created
-  "postCreateCommand": "bash .devcontainer/post-create.sh",
-  // Use 'postStartCommand' to run commands when the container starts
+  // Install workspace dependencies during prebuilds and refresh them when content changes
+  "updateContentCommand": "bash .devcontainer/update-content.sh",
+  "waitFor": "updateContentCommand",
+  // Keep user-specific credentials and .env setup out of prebuild snapshots
   "postAttachCommand": "bash .devcontainer/post-attach.sh",
   // Environment variables
   "containerEnv": {

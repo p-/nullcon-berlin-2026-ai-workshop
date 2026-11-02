@@ -24,4 +24,4 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 # Set working directory
 WORKDIR /workspaces/ai-workshop
 
-# The rest of the setup will be done in post-create script
+# Workspace dependencies are installed by updateContentCommand during prebuilds.
