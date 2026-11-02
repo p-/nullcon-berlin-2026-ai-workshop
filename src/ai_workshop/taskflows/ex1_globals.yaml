@@ -7,6 +7,7 @@ globals:
   fruit:
 taskflow:
   - task:
+      name: fruit info
       agents:
         - ai_workshop.personalities.fruit_expert
       model: general_tasks
