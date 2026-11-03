@@ -39,8 +39,8 @@ taskflow:
         documented as known, don't include it as a new variant, but note the 
         documented behavior. Finally, write your findings as a Markdown variant
         report for advisory id {{ result.ghsa_id }}.
-        IMPORTANT: always compare the affected source code with the current
-        source code to determine if the issue is fixed completely.
+        IMPORTANT: you cannot execute any code. You can only analyze the source
+        code statically.
 
       toolboxes:
         - seclab_taskflows.toolboxes.container_shell_source_access
