@@ -70,4 +70,5 @@ fi
 # data paths to.
 mkdir -p data logs
 
-echo "💡 Remember to activate the virtual environment: source .venv/bin/activate"
+echo "💡 Wait until the virtual environment is activated..."
+echo "💡 in case it doesn't activate after waiting for a while, activate it manually: source .venv/bin/activate"
