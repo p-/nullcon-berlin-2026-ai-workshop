@@ -31,6 +31,8 @@ REPORT_TEMPLATE = Environment(
 
 {{ variant_exists }}
 
+{{ variant_explanation }}
+
 ## Summary
 
 **Title:** {{ title }}
@@ -66,6 +68,7 @@ def _report_path(advisory_id: str) -> Path | None:
 async def write_variant_report(
     advisory_id: str = Field(description="The advisory id, e.g. GHSA-m2qf-hxjv-5gpq"),
     variant_exists: Literal["Yes", "No"] = Field(description="Does a vulnerable variant exist?"),
+    variant_explanation: str = Field(description="Explain why a variant or incomplete fix exists."),
     title: str = Field(description="Advisory title, e.g. fallback key is used instead of current signing key"),
     cve: str = Field(description="CVE id, e.g. CVE-2025-47278, or N/A if none"),
     package: str = Field(description="Affected package name, e.g. Flask"),
@@ -92,6 +95,7 @@ async def write_variant_report(
     report = REPORT_TEMPLATE.render(
         advisory_id=advisory_id,
         variant_exists=variant_exists,
+        variant_explanation=variant_explanation.strip(),
         title=_single_line(title),
         cve=_single_line(cve),
         package=_single_line(package),
