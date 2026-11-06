@@ -1,6 +1,10 @@
 # Nullcon Berlin 2026 AI Workshop: Build Your Own Audit Workflow
 
 
+## Slides
+
+[Slides as PDF](presentation/GHSecLab_NullconBerlin_BuildYourOwnWorkflow.pdf)
+
 ## Setup
 
 ### Prerequisites
